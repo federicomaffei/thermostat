@@ -61,7 +61,6 @@ describe("Thermostat", function() {
   })
 
   describe('cooler', function (){
-
     it('decreases the temperature if > 10°', function(){
       thermostat.cooler();
       expect(thermostat.temperature).toEqual(19);
@@ -70,6 +69,29 @@ describe("Thermostat", function() {
       thermostat.temperature = 10;
       thermostat.cooler();
       expect(thermostat.temperature).toEqual(10);
+    })
+  })
+
+  describe('reset button', function (){
+    it('puts the temperature to 20 no matter what', function(){
+      thermostat.temperature = 27
+      thermostat.reset_button();
+      expect(thermostat.temperature).toEqual(20);
+    })
+  })
+
+  describe('energy usage', function (){
+    it('is high if the the temperature is >= 25°', function(){
+      thermostat.temperature = 27
+      expect(thermostat.energyUsage()).toEqual('high');
+    })
+    it('is medium if the temperature is < 25° && >= 18', function(){
+      thermostat.temperature = 22
+      expect(thermostat.energyUsage()).toEqual('medium');
+    })
+    it('is low if the the temperature is < 18°', function(){
+      thermostat.temperature = 16
+      expect(thermostat.energyUsage()).toEqual('low');
     })
   })
 
