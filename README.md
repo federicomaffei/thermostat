@@ -19,3 +19,4 @@ Thermostat project - specifications:
 * The thermostat should color the display based on energy usage - < 18 is green, < 25 is yellow, otherwise red.
 
 * After every temperature change, the thermostat makes a POST request to localhost:4567/temperature_change, passing the new temperature.
+
